@@ -3,7 +3,7 @@ import pytest
 from selene.support.shared import browser
 from selene import support
 from appium import webdriver
-
+from mobile_tests_lesson_13.assist import attach
 import config
 
 
@@ -19,22 +19,7 @@ def driver_management():
 
     yield
 
-    # TODO: implement logging attachments to Allure Report based on:
-    # - java examples:
-    #   - https://github.com/qa-guru/mobile-tests-13/blob/master/src/test/java/helpers/Attach.java
-    #   - https://github.com/qa-guru/mobile-tests-13/blob/master/src/test/java/helpers/Browserstack.java
-    # - and official allure docs for python:
-    #   - https://docs.qameta.io/allure#_attachments_5
-
-    # session_id = assist.webdriver.get_session_id();
-
-    # attach.screenshot_as("Last screenshot");
-    # attach.page_source();
+    attach.add_video_from_browserstack(browser)
 
     browser.quit()
-    '''
-    # was:
-    step("Close driver", Selenide::closeWebDriver);
-    '''
 
-    # attach.video(session_id);
